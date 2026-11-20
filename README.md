@@ -6,7 +6,6 @@
 
 The application helps users create, organize, manage, and celebrate events through a colourful, responsive interface.
 
----
 
 ## ✨ Features
 
@@ -70,114 +69,6 @@ Saved information remains available after refreshing the application in the same
 | localStorage | Browser-based data persistence |
 | Git & GitHub | Version control and project hosting |
 
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-Install Node.js and npm before running the application.
-
-### Installation
-
-**1. Clone the repository**
-
-```bash
-git clone https://github.com/SheRock-ops/AngularApp4.git
-```
-
-**2. Navigate to the project directory**
-
-```bash
-cd AngularApp4
-```
-
-**3. Install dependencies**
-
-```bash
-npm install
-```
-
-**4. Start the development server**
-
-```bash
-npx ng serve --port 4201
-```
-
-**5. Open the application**
-
-Visit:
-
-http://localhost:4201
-
----
-
-## 🧪 Testing and Validation
-
-The application supports the following test scenarios:
-
-| Test | Expected Result |
-|---|---|
-| Create a valid event | Event is saved and displayed |
-| Enter a duplicate event title | Validation error appears |
-| Enter an invalid date range | Form prevents submission |
-| Edit an event | Updated information is displayed |
-| Delete an event | Event is removed after confirmation |
-| Submit a valid RSVP | Success notification appears |
-| Refresh the browser | Saved data remains available |
-| Simulate an HTTP error | Error notification appears and RSVP form stays open |
-
-### Simulated HTTP Error Testing
-
-In `dashboard.component.ts`, temporarily change:
-
-```typescript
-simulateRsvpError = false;
-```
-
-to:
-
-```typescript
-simulateRsvpError = true;
-```
-
-Submit an RSVP to test the simulated server failure.
-
-**Important:** Restore the value to `false` after testing.
-
----
-
-## 📂 Project Structure
-
-```text
-src/
-└── app/
-    ├── components/
-    │   ├── dashboard/
-    │   ├── event-card/
-    │   ├── event-form/
-    │   ├── event-list/
-    │   └── rsvp-form/
-    ├── models/
-    │   └── event.ts
-    └── services/
-        ├── event.service.ts
-        └── rsvp.service.ts
-```
-
----
-
-## 🎓 Academic Project
-
-**Course:** Angular Development
-
-**Assignment:** Angular Assignment 4
-
-**Project:** Eventopia — Event Planning Application
-
-**Developer:** Sheila Mae Dalisay-Duremdes
-
----
 
 ## 🔮 Future Enhancements
 
