@@ -1,0 +1,173 @@
+
+/* ========================================
+   EVENTOPIA - EVENT CARD
+   Colourful Angular Material Styling
+======================================== */
+
+:host {
+    display: block;
+    min-width: 0;
+}
+
+.event-card {
+    height: 100%;
+    overflow: hidden;
+    background: #ffffff !important;
+    color: #35204f !important;
+    border: 1px solid #f0d9f4;
+    border-radius: 22px !important;
+    box-shadow: 0 10px 30px rgba(104, 42, 153, 0.12) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 35px rgba(104, 42, 153, 0.18) !important;
+}
+
+/* ========================================
+   EVENT HEADER
+======================================== */
+
+.event-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 24px;
+    background: linear-gradient(
+        120deg,
+        #f4e7ff,
+        #ffe6f2,
+        #fff0e8
+    );
+}
+
+.event-category {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #ffffff;
+    color: #a32b9e;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.event-card-header h3 {
+    margin: 14px 0 0;
+    color: #542178;
+    font-size: 22px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.event-header-icon {
+    color: #c72db4;
+    flex-shrink: 0;
+}
+
+/* ========================================
+   EVENT DETAILS
+======================================== */
+
+mat-card-content {
+    padding: 24px !important;
+}
+
+.event-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: #514260;
+    font-size: 14px;
+}
+
+.event-detail mat-icon {
+    flex-shrink: 0;
+    color: #9a43c6;
+}
+
+.event-detail span {
+    overflow-wrap: anywhere;
+}
+
+.event-description {
+    margin: 18px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid #f0e2f4;
+    color: #65566f;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* ========================================
+   EVENT ACTION BUTTONS
+======================================== */
+
+.event-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 24px 24px !important;
+}
+
+.edit-button {
+    color: #782ab1 !important;
+    border-color: #d7b5eb !important;
+    border-radius: 25px !important;
+}
+
+.delete-button {
+    color: #c62860 !important;
+    border-color: #f3bfd0 !important;
+    border-radius: 25px !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 650px) {
+
+    .event-card-header {
+        padding: 20px;
+    }
+
+    .event-card-header h3 {
+        font-size: 19px;
+    }
+
+    mat-card-content {
+        padding: 20px !important;
+    }
+
+    .event-actions {
+        padding: 0 20px 20px !important;
+    }
+}
+
+/* ========================================
+   EVENTOPIA - RSVP BUTTON
+======================================== */
+
+.rsvp-button {
+    min-height: 42px;
+    padding: 0 24px !important;
+    border-radius: 30px !important;
+    background: linear-gradient(
+        120deg,
+        #8a27e0,
+        #e42ca9,
+        #ff7774
+    ) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(193, 44, 163, 0.22);
+    transition: transform 0.2s ease;
+}
+
+.rsvp-button:hover {
+    transform: translateY(-2px);
+}

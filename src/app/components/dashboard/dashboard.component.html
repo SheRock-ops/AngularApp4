@@ -1,0 +1,159 @@
+
+<!-- ========================================
+     EVENTOPIA - DASHBOARD
+     Angular Assignment 4
+======================================== -->
+
+<div class="dashboard">
+
+    <!-- Navigation Header -->
+    <header class="dashboard-header">
+
+        <div class="brand">
+            <mat-icon>celebration</mat-icon>
+            <span>Eventopia</span>
+        </div>
+
+        <nav class="dashboard-nav">
+
+            <a href="#home" (click)="closeEventForm(); closeRsvpForm()">
+                Home
+            </a>
+
+            <a href="#events" (click)="closeEventForm(); closeRsvpForm()">
+                My Events
+            </a>
+
+        </nav>
+
+        <button
+            mat-flat-button
+            type="button"
+            class="header-button"
+            (click)="openEventForm()"
+        >
+            <mat-icon>add</mat-icon>
+            Create Event
+        </button>
+
+    </header>
+
+    <!-- Create or Edit Event Form -->
+    @if (showEventForm) {
+
+        <app-event-form
+            [existingEvents]="events"
+            [eventToEdit]="eventToEdit"
+            (eventSaved)="saveEvent($event)"
+            (cancelled)="closeEventForm()">
+        </app-event-form>
+
+    } @else if (showRsvpForm && selectedRsvpEvent) {
+
+        <!-- Template-Driven RSVP Form -->
+        <app-rsvp-form
+            [event]="selectedRsvpEvent"
+            (rsvpSubmitted)="handleRsvpSubmission($event)"
+            (cancelled)="closeRsvpForm()">
+        </app-rsvp-form>
+
+    } @else {
+
+        <!-- Dashboard Main Content -->
+        <main id="home" class="dashboard-main">
+
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+
+                <div class="welcome-badge">
+                    ✨ YOUR EVENT PLANNING SPACE
+                </div>
+
+                <h1>{{ title }}</h1>
+
+                <p>{{ subtitle }}</p>
+
+                <p class="welcome-description">
+                    Turn your special moments into unforgettable
+                    memories. Organize, manage, and celebrate
+                    every occasion in one beautiful place.
+                </p>
+
+            </section>
+
+            <!-- Dashboard Statistics -->
+            <section id="events" class="statistics-section">
+
+                <mat-card class="stat-card total-card">
+                    <mat-icon>event</mat-icon>
+                    <h2>{{ totalEvents }}</h2>
+                    <p>Total Events</p>
+                </mat-card>
+
+                <mat-card class="stat-card upcoming-card">
+                    <mat-icon>event_available</mat-icon>
+                    <h2>{{ upcomingEvents }}</h2>
+                    <p>Upcoming Events</p>
+                </mat-card>
+
+                <mat-card class="stat-card completed-card">
+                    <mat-icon>task_alt</mat-icon>
+                    <h2>{{ completedEvents }}</h2>
+                    <p>Completed Events</p>
+                </mat-card>
+
+            </section>
+
+            <!-- Your Events Section -->
+            <section class="events-section">
+
+                <h2>🎊 Your Events</h2>
+
+                @if (events.length === 0) {
+
+                    <!-- Empty Events Message -->
+                    <div class="empty-events">
+
+                        <mat-icon>calendar_month</mat-icon>
+
+                        <h3>No events yet!</h3>
+
+                        <p>
+                            Your next unforgettable moment starts here.
+                            Create your first event to get started.
+                        </p>
+
+                    </div>
+
+                } @else {
+
+                    <!-- Display Saved Events -->
+                    <div class="event-list">
+
+                        @for (eventItem of events; track eventItem.id) {
+
+                            <app-event-card
+                                [event]="eventItem"
+                                (editRequested)="editEvent($event)"
+                                (deleteRequested)="deleteEvent($event)"
+                                (rsvpRequested)="openRsvpForm($event)">
+                            </app-event-card>
+
+                        }
+
+                    </div>
+
+                }
+
+            </section>
+
+        </main>
+
+    }
+
+    <!-- Dashboard Footer -->
+    <footer class="dashboard-footer">
+        <p>© 2026 Eventopia, All rights reserved.</p>
+    </footer>
+
+</div>

@@ -1,0 +1,250 @@
+
+<!-- ========================================
+     EVENTOPIA - RSVP FORM
+     Angular Assignment 4
+     Template-Driven Form with Angular Material
+======================================== -->
+
+<section class="rsvp-form-section">
+
+    <div class="rsvp-container">
+
+        <!-- RSVP Header -->
+        <div class="rsvp-header">
+
+            <div class="rsvp-header-icon">
+                <mat-icon>favorite</mat-icon>
+            </div>
+
+            <div>
+                <span class="rsvp-label">
+                    ✨ YOU'RE INVITED
+                </span>
+
+                <h2>RSVP to Your Event</h2>
+
+                <p>{{ event.title }}</p>
+            </div>
+
+        </div>
+
+        <!-- Template-Driven RSVP Form -->
+        <form
+            #rsvpForm="ngForm"
+            (ngSubmit)="submitRsvp(rsvpForm)"
+            novalidate
+        >
+
+            <div class="rsvp-grid">
+
+                <!-- ========================================
+                     GUEST NAME
+                ======================================== -->
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>Full Name</mat-label>
+
+                    <mat-icon matPrefix>person</mat-icon>
+
+                    <input
+                        matInput
+                        type="text"
+                        name="guestName"
+                        [(ngModel)]="guestName"
+                        #guestNameField="ngModel"
+                        required
+                        minlength="2"
+                        maxlength="100"
+                    >
+
+                    @if (guestNameField.hasError('required') &&
+                        (guestNameField.touched || submitted)) {
+                        <mat-error>
+                            Your name is required.
+                        </mat-error>
+                    }
+
+                    @if (guestNameField.hasError('minlength') &&
+                        (guestNameField.touched || submitted)) {
+                        <mat-error>
+                            Enter at least 2 characters.
+                        </mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- ========================================
+                     EMAIL ADDRESS
+                ======================================== -->
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>Email Address</mat-label>
+
+                    <mat-icon matPrefix>email</mat-icon>
+
+                    <input
+                        matInput
+                        type="email"
+                        name="email"
+                        [(ngModel)]="email"
+                        #emailField="ngModel"
+                        required
+                        email
+                    >
+
+                    @if (emailField.hasError('required') &&
+                        (emailField.touched || submitted)) {
+                        <mat-error>
+                            Email address is required.
+                        </mat-error>
+                    }
+
+                    @if (emailField.hasError('email') &&
+                        (emailField.touched || submitted)) {
+                        <mat-error>
+                            Enter a valid email address.
+                        </mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- ========================================
+                     ATTENDANCE CONFIRMATION
+                ======================================== -->
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>Will You Attend?</mat-label>
+
+                    <mat-icon matPrefix>how_to_reg</mat-icon>
+
+                    <mat-select
+                        name="attendance"
+                        [(ngModel)]="attendance"
+                        #attendanceField="ngModel"
+                        required
+                    >
+
+                        <mat-option value="Yes">
+                            Yes, I'll be there!
+                        </mat-option>
+
+                        <mat-option value="No">
+                            Sorry, I can't attend.
+                        </mat-option>
+
+                    </mat-select>
+
+                    @if (attendanceField.hasError('required') &&
+                        (attendanceField.touched || submitted)) {
+                        <mat-error>
+                            Please select your response.
+                        </mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- ========================================
+                     NUMBER OF GUESTS
+                ======================================== -->
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>Number of Guests</mat-label>
+
+                    <mat-icon matPrefix>groups</mat-icon>
+
+                    <input
+                        matInput
+                        type="number"
+                        name="numberOfGuests"
+                        [(ngModel)]="numberOfGuests"
+                        #guestsField="ngModel"
+                        [required]="attendance === 'Yes'"
+                        [disabled]="attendance !== 'Yes'"
+                        min="1"
+                        [max]="event.capacity"
+                    >
+
+                    @if (guestsField.hasError('required') &&
+                        (guestsField.touched || submitted)) {
+                        <mat-error>
+                            Guest count is required.
+                        </mat-error>
+                    }
+
+                    @if (guestsField.hasError('min') &&
+                        (guestsField.touched || submitted)) {
+                        <mat-error>
+                            At least 1 guest is required.
+                        </mat-error>
+                    }
+
+                    @if (guestsField.hasError('max') &&
+                        (guestsField.touched || submitted)) {
+                        <mat-error>
+                            Maximum {{ event.capacity }} guests allowed.
+                        </mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- ========================================
+                     OPTIONAL MESSAGE
+                ======================================== -->
+
+                <mat-form-field
+                    appearance="outline"
+                    class="full-width"
+                >
+
+                    <mat-label>Message (Optional)</mat-label>
+
+                    <textarea
+                        matInput
+                        rows="4"
+                        name="message"
+                        [(ngModel)]="message"
+                        maxlength="500"
+                    ></textarea>
+
+                </mat-form-field>
+
+            </div>
+
+            <!-- ========================================
+                 RSVP ACTION BUTTONS
+            ======================================== -->
+
+            <div class="rsvp-actions">
+
+                <!-- Cancel Button -->
+                <button
+                    mat-stroked-button
+                    type="button"
+                    class="cancel-button"
+                    (click)="cancel()"
+                >
+                    <mat-icon>close</mat-icon>
+                    Cancel
+                </button>
+
+                <!-- Submit RSVP Button -->
+                <button
+                    mat-flat-button
+                    type="submit"
+                    class="submit-button"
+                >
+                    <mat-icon>send</mat-icon>
+                    Submit RSVP
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>

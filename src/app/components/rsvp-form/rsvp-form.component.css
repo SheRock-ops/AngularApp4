@@ -1,0 +1,299 @@
+
+/* ========================================
+   EVENTOPIA - RSVP FORM
+   Colourful Angular Material Styling
+======================================== */
+
+:host {
+    display: block;
+    width: 100%;
+
+    --mdc-outlined-text-field-input-text-color: #35204f;
+    --mdc-outlined-text-field-label-text-color: #675675;
+    --mdc-outlined-text-field-outline-color: #a99aaa;
+    --mdc-outlined-text-field-hover-outline-color: #8752a6;
+    --mdc-outlined-text-field-focus-outline-color: #c13ab5;
+}
+
+/* ========================================
+   RSVP SECTION
+======================================== */
+
+.rsvp-form-section {
+    padding: 35px 15px;
+    background: linear-gradient(
+        135deg,
+        #f5e9ff,
+        #ffe9f5,
+        #e7fbff
+    );
+}
+
+.rsvp-container {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 20px 55px rgba(104, 42, 153, 0.16);
+}
+
+/* ========================================
+   RSVP HEADER
+======================================== */
+
+.rsvp-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 35px;
+    background: linear-gradient(
+        120deg,
+        #6827ce,
+        #c72db4,
+        #ff7183
+    );
+    color: #ffffff;
+}
+
+.rsvp-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.rsvp-header-icon mat-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 42px;
+    color: #ffffff;
+}
+
+.rsvp-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.rsvp-header h2 {
+    margin: 10px 0;
+    font-size: clamp(25px, 4vw, 36px);
+    font-weight: 800;
+}
+
+.rsvp-header p {
+    margin: 0;
+    opacity: 0.95;
+}
+
+/* ========================================
+   RSVP FORM LAYOUT
+======================================== */
+
+form {
+    padding: 38px;
+}
+
+.rsvp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px 22px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+mat-form-field {
+    width: 100%;
+    min-width: 0;
+}
+
+/* ========================================
+   FORM TEXT READABILITY
+======================================== */
+
+:host input.mat-mdc-input-element,
+:host textarea.mat-mdc-input-element {
+    color: #35204f !important;
+    caret-color: #a52ac2;
+    -webkit-text-fill-color: #35204f;
+}
+
+:host .mat-mdc-select-value-text {
+    color: #35204f !important;
+}
+
+:host .mat-mdc-select-placeholder {
+    color: #786b83 !important;
+}
+
+:host mat-form-field mat-icon {
+    color: #8752a6;
+}
+
+:host mat-error {
+    color: #c62828;
+    font-weight: 500;
+}
+
+/* ========================================
+   RSVP BUTTONS
+======================================== */
+
+.rsvp-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.cancel-button {
+    min-height: 48px;
+    padding: 0 24px !important;
+    border-radius: 30px !important;
+    color: #6c4387 !important;
+}
+
+.submit-button {
+    min-height: 48px;
+    padding: 0 30px !important;
+    border-radius: 30px !important;
+    background: linear-gradient(
+        120deg,
+        #8a27e0,
+        #e42ca9,
+        #ff7774
+    ) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    box-shadow: 0 8px 22px rgba(193, 44, 163, 0.25);
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 650px) {
+
+    .rsvp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+    }
+
+    form {
+        padding: 24px 18px;
+    }
+
+    .rsvp-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .rsvp-actions {
+        flex-direction: column;
+    }
+
+    .rsvp-actions button {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   EVENTOPIA - RSVP FORM READABILITY FIX
+   Improve Angular Material Text Contrast
+======================================== */
+
+/* Make form labels darker and easier to read. */
+:host ::ng-deep .mat-mdc-form-field .mdc-floating-label {
+    color: #584267 !important;
+    opacity: 1 !important;
+}
+
+/* Make focused labels readable against white backgrounds. */
+:host ::ng-deep .mat-mdc-form-field.mat-focused .mdc-floating-label {
+    color: #9b28bc !important;
+}
+
+/* Make entered text dark and clearly visible. */
+:host ::ng-deep .mat-mdc-input-element {
+    color: #35204f !important;
+    -webkit-text-fill-color: #35204f !important;
+    opacity: 1 !important;
+}
+
+/* Improve placeholder text visibility. */
+:host ::ng-deep .mat-mdc-input-element::placeholder {
+    color: #756780 !important;
+    -webkit-text-fill-color: #756780 !important;
+    opacity: 1 !important;
+}
+
+/* Fix the RSVP attendance dropdown text. */
+:host ::ng-deep .mat-mdc-select-value,
+:host ::ng-deep .mat-mdc-select-value-text,
+:host ::ng-deep .mat-mdc-select-min-line {
+    color: #35204f !important;
+    opacity: 1 !important;
+}
+
+/* Improve dropdown placeholder contrast. */
+:host ::ng-deep .mat-mdc-select-placeholder {
+    color: #756780 !important;
+    opacity: 1 !important;
+}
+
+/* Improve dropdown arrow visibility. */
+:host ::ng-deep .mat-mdc-select-arrow {
+    color: #9b28bc !important;
+}
+
+/* Make form field borders more visible. */
+:host ::ng-deep .mdc-notched-outline__leading,
+:host ::ng-deep .mdc-notched-outline__notch,
+:host ::ng-deep .mdc-notched-outline__trailing {
+    border-color: #a99aaa !important;
+}
+
+/* Highlight the active field with Eventopia purple. */
+:host ::ng-deep .mat-mdc-form-field.mat-focused
+.mdc-notched-outline__leading,
+:host ::ng-deep .mat-mdc-form-field.mat-focused
+.mdc-notched-outline__notch,
+:host ::ng-deep .mat-mdc-form-field.mat-focused
+.mdc-notched-outline__trailing {
+    border-color: #b62bc4 !important;
+}
+
+/* Keep the field background white. */
+:host ::ng-deep .mat-mdc-text-field-wrapper {
+    background-color: #ffffff !important;
+}
+
+/* Improve textarea readability. */
+:host ::ng-deep textarea.mat-mdc-input-element {
+    color: #35204f !important;
+    -webkit-text-fill-color: #35204f !important;
+}
+
+/* Keep form icons visible. */
+:host ::ng-deep .mat-mdc-form-field-icon-prefix mat-icon {
+    color: #8752a6 !important;
+}
+
+/* Keep validation messages readable. */
+:host ::ng-deep mat-error {
+    color: #c62828 !important;
+    font-weight: 600;
+}

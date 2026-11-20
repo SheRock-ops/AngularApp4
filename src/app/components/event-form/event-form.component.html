@@ -1,0 +1,330 @@
+
+<!-- ========================================
+     EVENTOPIA - CREATE EVENT FORM
+     Angular Assignment 4
+     Reactive Form with Angular Material
+======================================== -->
+
+<section class="event-form-section">
+
+    <div class="form-container">
+
+        <!-- Form Header -->
+        <div class="form-header">
+
+            <div class="form-icon">
+                <mat-icon>celebration</mat-icon>
+            </div>
+
+            <div>
+                <span class="form-label">
+                    ✨ MAKE SOMETHING AMAZING
+                </span>
+
+                <h2>
+                    {{ eventToEdit ? 'Edit Your Event' : 'Create Your Event' }}
+                </h2>
+
+                <p>
+                    Every unforgettable moment begins with a plan!
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Reactive Event Form -->
+        <form
+            [formGroup]="eventForm"
+            (ngSubmit)="saveEvent()"
+            novalidate
+        >
+
+            <div class="form-grid">
+
+                <!-- Event Title -->
+                <mat-form-field
+                    appearance="outline"
+                    floatLabel="always"
+                    class="full-width"
+                >
+
+                    <mat-label>Event Title</mat-label>
+
+                    <mat-icon matPrefix>edit_calendar</mat-icon>
+
+                    <input
+                        matInput
+                        formControlName="title"
+                        placeholder="e.g. My Amazing Birthday Party"
+                    >
+
+                    @if (hasError('title', 'required')) {
+                        <mat-error>Event title is required.</mat-error>
+                    }
+
+                    @if (hasError('title', 'minlength')) {
+                        <mat-error>Enter at least 3 characters.</mat-error>
+                    }
+
+                    @if (hasError('title', 'maxlength')) {
+                        <mat-error>Maximum 100 characters allowed.</mat-error>
+                    }
+
+                    @if (hasError('title', 'duplicateTitle')) {
+                        <mat-error>This event title already exists.</mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- Event Category -->
+                <mat-form-field
+                    appearance="outline"
+                    floatLabel="always"
+                >
+
+                    <mat-label>Event Category</mat-label>
+
+                    <mat-icon matPrefix>category</mat-icon>
+
+                    <mat-select
+                        formControlName="category"
+                        placeholder="Select a category"
+                    >
+
+                        @for (category of categories; track category) {
+                            <mat-option [value]="category">
+                                {{ category }}
+                            </mat-option>
+                        }
+
+                    </mat-select>
+
+                    @if (hasError('category', 'required')) {
+                        <mat-error>Please select an event category.</mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- Event Location -->
+                <mat-form-field
+                    appearance="outline"
+                    floatLabel="always"
+                >
+
+                    <mat-label>Event Location</mat-label>
+
+                    <mat-icon matPrefix>location_on</mat-icon>
+
+                    <input
+                        matInput
+                        formControlName="location"
+                        placeholder="e.g. Toronto Convention Centre"
+                    >
+
+                    @if (hasError('location', 'required')) {
+                        <mat-error>Event location is required.</mat-error>
+                    }
+
+                    @if (hasError('location', 'maxlength')) {
+                        <mat-error>Maximum 150 characters allowed.</mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- Start Date -->
+                <mat-form-field
+                    appearance="outline"
+                    floatLabel="always"
+                >
+
+                    <mat-label>Start Date</mat-label>
+
+                    <input
+                        matInput
+                        [matDatepicker]="startPicker"
+                        [min]="minDate"
+                        formControlName="startDate"
+                        placeholder="Choose a start date"
+                    >
+
+                    <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="startPicker">
+                    </mat-datepicker-toggle>
+
+                    <mat-datepicker #startPicker></mat-datepicker>
+
+                    @if (hasError('startDate', 'required')) {
+                        <mat-error>Start date is required.</mat-error>
+                    }
+
+                    @if (hasError('startDate', 'matDatepickerMin')) {
+                        <mat-error>Choose today or a future date.</mat-error>
+                    }
+
+                    @if (hasError('startDate', 'matDatepickerParse')) {
+                        <mat-error>Enter a valid start date.</mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- End Date -->
+                <mat-form-field
+                    appearance="outline"
+                    floatLabel="always"
+                >
+
+                    <mat-label>End Date</mat-label>
+
+                    <input
+                        matInput
+                        [matDatepicker]="endPicker"
+                        [min]="minDate"
+                        formControlName="endDate"
+                        placeholder="Choose an end date"
+                    >
+
+                    <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="endPicker">
+                    </mat-datepicker-toggle>
+
+                    <mat-datepicker #endPicker></mat-datepicker>
+
+                    @if (hasError('endDate', 'required')) {
+                        <mat-error>End date is required.</mat-error>
+                    }
+
+                    @if (hasError('endDate', 'matDatepickerMin')) {
+                        <mat-error>Choose today or a future date.</mat-error>
+                    }
+
+                    @if (hasError('endDate', 'matDatepickerParse')) {
+                        <mat-error>Enter a valid end date.</mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- Event Time -->
+                <mat-form-field
+                    appearance="outline"
+                    floatLabel="always"
+                >
+
+                    <mat-label>Event Time</mat-label>
+
+                    <mat-icon matPrefix>schedule</mat-icon>
+
+                    <input
+                        matInput
+                        type="time"
+                        formControlName="time"
+                    >
+
+                    @if (hasError('time', 'required')) {
+                        <mat-error>Event time is required.</mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- Maximum Attendees -->
+                <mat-form-field
+                    appearance="outline"
+                    floatLabel="always"
+                >
+
+                    <mat-label>Maximum Attendees</mat-label>
+
+                    <mat-icon matPrefix>groups</mat-icon>
+
+                    <input
+                        matInput
+                        type="number"
+                        min="1"
+                        max="10000"
+                        formControlName="capacity"
+                    >
+
+                    @if (hasError('capacity', 'required')) {
+                        <mat-error>Capacity is required.</mat-error>
+                    }
+
+                    @if (hasError('capacity', 'min')) {
+                        <mat-error>Capacity must be at least 1.</mat-error>
+                    }
+
+                    @if (hasError('capacity', 'max')) {
+                        <mat-error>Maximum capacity is 10,000.</mat-error>
+                    }
+
+                </mat-form-field>
+
+                <!-- Event Description -->
+                <mat-form-field
+                    appearance="outline"
+                    floatLabel="always"
+                    class="full-width"
+                >
+
+                    <mat-label>Event Description</mat-label>
+
+                    <textarea
+                        matInput
+                        rows="4"
+                        formControlName="description"
+                        placeholder="Tell us about your amazing event..."
+                    ></textarea>
+
+                    @if (hasError('description', 'maxlength')) {
+                        <mat-error>Maximum 1,000 characters allowed.</mat-error>
+                    }
+
+                </mat-form-field>
+
+            </div>
+
+            <!-- Custom Date Range Validation -->
+            @if (
+                eventForm.hasError('invalidDateRange') &&
+                (submitted || eventForm.touched)
+            ) {
+                <div class="form-alert" role="alert">
+                    <mat-icon>error_outline</mat-icon>
+                    <span>
+                        The end date cannot be earlier than the start date.
+                    </span>
+                </div>
+            }
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+
+                <button
+                    mat-stroked-button
+                    type="button"
+                    class="cancel-button"
+                    (click)="cancel()"
+                >
+                    <mat-icon>close</mat-icon>
+                    Cancel
+                </button>
+
+                <button
+                    mat-flat-button
+                    type="submit"
+                    class="save-button"
+                >
+                    <mat-icon>
+                        {{ eventToEdit ? 'save' : 'add_circle' }}
+                    </mat-icon>
+
+                    {{ eventToEdit ? 'Save Changes' : 'Create Event' }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>

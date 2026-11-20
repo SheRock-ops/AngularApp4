@@ -1,0 +1,304 @@
+
+/* ========================================
+   EVENTOPIA - CREATE EVENT FORM
+   Colourful Angular Material Styling
+======================================== */
+
+:host {
+    display: block;
+    width: 100%;
+
+    /* Angular Material outlined input colours */
+    --mdc-outlined-text-field-input-text-color: #35204f;
+    --mdc-outlined-text-field-label-text-color: #675675;
+    --mdc-outlined-text-field-hover-label-text-color: #652d90;
+    --mdc-outlined-text-field-focus-label-text-color: #b12caa;
+
+    --mdc-outlined-text-field-outline-color: #a99aaa;
+    --mdc-outlined-text-field-hover-outline-color: #8752a6;
+    --mdc-outlined-text-field-focus-outline-color: #c13ab5;
+
+    --mdc-outlined-text-field-input-text-placeholder-color: #786b83;
+    --mdc-outlined-text-field-error-label-text-color: #c62828;
+    --mdc-outlined-text-field-error-outline-color: #c62828;
+
+    /* Angular Material select colours */
+    --mat-select-enabled-trigger-text-color: #35204f;
+    --mat-select-enabled-arrow-color: #8752a6;
+    --mat-select-focused-arrow-color: #b12caa;
+}
+
+/* ========================================
+   FORM SECTION
+======================================== */
+
+.event-form-section {
+    padding: 35px 15px;
+    background: linear-gradient(
+        135deg,
+        #f5e9ff,
+        #ffe9f5,
+        #e7fbff
+    );
+}
+
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 20px 55px rgba(104, 42, 153, 0.16);
+}
+
+/* ========================================
+   FORM HEADER
+======================================== */
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 35px;
+    background: linear-gradient(
+        120deg,
+        #6827ce,
+        #c72db4,
+        #ff7183
+    );
+    color: #ffffff;
+}
+
+.form-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.form-icon mat-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 42px;
+    color: #ffffff;
+}
+
+.form-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.form-header h2 {
+    margin: 10px 0;
+    font-size: clamp(25px, 4vw, 36px);
+    font-weight: 800;
+}
+
+.form-header p {
+    margin: 0;
+    opacity: 0.95;
+}
+
+/* ========================================
+   FORM LAYOUT
+======================================== */
+
+form {
+    padding: 38px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px 22px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+mat-form-field {
+    width: 100%;
+    min-width: 0;
+}
+
+/* ========================================
+   FORM TEXT READABILITY
+======================================== */
+
+/* Make typed text dark purple. */
+:host input.mat-mdc-input-element,
+:host textarea.mat-mdc-input-element {
+    color: #35204f !important;
+    caret-color: #a52ac2;
+    -webkit-text-fill-color: #35204f;
+}
+
+/* Make placeholder text visible. */
+:host input.mat-mdc-input-element::placeholder,
+:host textarea.mat-mdc-input-element::placeholder {
+    color: #786b83 !important;
+    opacity: 1;
+}
+
+/* Improve field label visibility. */
+:host .mat-mdc-form-field {
+    --mdc-outlined-text-field-label-text-color: #675675;
+    --mdc-outlined-text-field-input-text-color: #35204f;
+}
+
+/* Improve field prefix icons. */
+:host .mat-mdc-form-field mat-icon[matPrefix] {
+    color: #8752a6;
+}
+
+/* ========================================
+   EVENT CATEGORY DROPDOWN READABILITY
+======================================== */
+
+/* Selected category text */
+:host .mat-mdc-select-value,
+:host .mat-mdc-select-value-text,
+:host .mat-mdc-select-min-line {
+    color: #35204f !important;
+    font-weight: 600;
+}
+
+/* Category placeholder */
+:host .mat-mdc-select-placeholder {
+    color: #786b83 !important;
+}
+
+/* Dropdown arrow */
+:host .mat-mdc-select-arrow {
+    color: #8752a6 !important;
+}
+
+/* Keep select colours consistent. */
+:host .mat-mdc-select {
+    --mat-select-enabled-trigger-text-color: #35204f;
+    --mat-select-enabled-arrow-color: #8752a6;
+    --mat-select-focused-arrow-color: #b12caa;
+}
+
+/* ========================================
+   CALENDAR ICON READABILITY
+======================================== */
+
+:host .mat-datepicker-toggle {
+    color: #8752a6 !important;
+}
+
+:host .mat-datepicker-toggle button {
+    color: #8752a6 !important;
+}
+
+:host .mat-datepicker-toggle-default-icon {
+    fill: #8752a6 !important;
+}
+
+/* ========================================
+   FORM VALIDATION
+======================================== */
+
+:host mat-error {
+    color: #c62828;
+    font-weight: 500;
+}
+
+/* ========================================
+   FORM VALIDATION ALERT
+======================================== */
+
+.form-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    margin-top: 15px;
+    border: 1px solid #ffc4cc;
+    border-radius: 14px;
+    background: #fff0f2;
+    color: #a91e43;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-alert mat-icon {
+    flex-shrink: 0;
+    color: #a91e43;
+}
+
+/* ========================================
+   FORM BUTTONS
+======================================== */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.cancel-button {
+    min-height: 48px;
+    padding: 0 24px !important;
+    border-radius: 30px !important;
+    color: #6c4387 !important;
+}
+
+.save-button {
+    min-height: 48px;
+    padding: 0 30px !important;
+    border-radius: 30px !important;
+    background: linear-gradient(
+        120deg,
+        #8a27e0,
+        #e42ca9,
+        #ff7774
+    ) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    box-shadow: 0 8px 22px rgba(193, 44, 163, 0.25);
+    transition: transform 0.2s ease;
+}
+
+.save-button:hover {
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 650px) {
+
+    .form-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+    }
+
+    form {
+        padding: 24px 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}
