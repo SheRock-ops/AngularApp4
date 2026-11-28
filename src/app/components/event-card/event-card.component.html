@@ -1,9 +1,11 @@
-
 <!-- ========================================
      EVENTOPIA - EVENT CARD
 ======================================== -->
 
-<mat-card class="event-card">
+<mat-card
+    class="event-card"
+    [appEventHighlight]="event.status"
+>
 
     <!-- Event Header -->
     <div class="event-card-header">
@@ -14,6 +16,15 @@
             </span>
 
             <h3>{{ event.title }}</h3>
+
+            <!-- Dynamic Event Status -->
+            <span
+                class="event-status"
+                [ngClass]="event.status.toLowerCase()"
+            >
+                {{ event.status }}
+            </span>
+
         </div>
 
         <mat-icon class="event-header-icon">

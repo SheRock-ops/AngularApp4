@@ -1,4 +1,3 @@
-
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -8,6 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 // Import the Event model.
 import { Event } from '../../models/event';
 
+// Import the custom directive.
+import { EventHighlightDirective } from '../../directives/event-highlight.directive';
+import { EventStatusPipe } from '../../pipes/event-status.pipe';
+
 @Component({
   selector: 'app-event-card',
   standalone: true,
@@ -15,8 +18,9 @@ import { Event } from '../../models/event';
     CommonModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
-  ],
+    MatButtonModule,
+    EventHighlightDirective
+],
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.css'
 })

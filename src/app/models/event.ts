@@ -1,8 +1,5 @@
-
 /* ========================================
    EVENTOPIA - EVENT MODEL
-   Angular Assignment 4
-
    Defines the structure of an event.
 ======================================== */
 
@@ -18,6 +15,7 @@ export type EventCategory =
 
 // Represents one event in Eventopia.
 export interface Event {
+status: string;
 
   // Unique identifier for each event.
   id: string;

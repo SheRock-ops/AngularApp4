@@ -1,29 +1,53 @@
-import { TestBed } from '@angular/core/testing';
+
+/// <reference types="jasmine" />
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
+
+  // =========================================
+  // TEST SETUP
+  // =========================================
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+  // =========================================
+  // APPLICATION INITIALIZATION
+  // =========================================
+
+  it('should create the Eventopia application', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'AngularApp4' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('AngularApp4');
+  // =========================================
+  // APPLICATION TITLE
+  // =========================================
+
+  it('should have the correct Eventopia title', () => {
+    expect(app.title).toEqual('Eventopia');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  // =========================================
+  // APPLICATION BRANDING
+  // =========================================
+
+  it('should render the Eventopia branding', () => {
     fixture.detectChanges();
+
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, AngularApp4');
+
+    expect(compiled.textContent).toContain('Eventopia');
   });
+
 });

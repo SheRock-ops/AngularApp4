@@ -364,6 +364,9 @@ export class EventFormComponent implements OnInit {
 
       capacity: Number(formValue.capacity),
 
+      // Preserve the status when editing an existing event.
+      status: this.eventToEdit?.status ?? 'Upcoming',
+
       // Preserve the original creation date when editing.
       createdAt: this.eventToEdit?.createdAt
         ?? new Date().toISOString()
